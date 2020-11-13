@@ -1,5 +1,6 @@
 #include <pic18f4520.h>
 #include <math.h>
+#include <stdlib.h>
 #include "check.c"
 #pragma config OSC=HS
 #pragma config PWRT=OFF
@@ -7,33 +8,23 @@
 #pragma config DEBUG=OFF, LVP=OFF 
 #pragma config PBADEN=OFF
 
+unsigned char text[] = {"    o      o  o"};
+
 
 void LCDinterface(){
     TRISD = 0x00;
     TRISE = 0x00;
     ADCON1=0x0F;
     lcdinit();
-    // lcddisplay(1,text1);
-    TRISBbits.RB3 = 1;
+
     
-      //first location for stickman; rest locations for spawn
     while(1){
-        delay(1000);
-        
-        lcddisplay(2,queue);
+        lcddisplay(2,text);
+        delay(10);
         changeQueue();
-        delay(1000); 
-        
-        
-        if (queue[0]==1){
-            if (PORTBbits.RB3){
-             // bouncyJump();
-            score++;
-            }
-        }  
     }
-}
-    
+        
+}  
 
 
 void lcdinit(void){
@@ -55,7 +46,7 @@ void lcdcmd(unsigned char value){
     en=0;
 }
 
-void lcddata(unsigned int value){
+void lcddata(unsigned char value){
     ldata=value;
     rs=1;
     en=1;
@@ -63,17 +54,17 @@ void lcddata(unsigned int value){
     en=0;
 }
 
-void lcddisplay(int row, unsigned int *queue){
+void lcddisplay(int row, unsigned char *str){
     int k;
     if (row==1)
     lcdcmd(0x80);
     else
     lcdcmd(0xC0);
-    for(k=0;k<15;k++){
-        //if(queue[k] !=0)
-        lcddata(queue[k]);
-        // else
-        // break;
+    for(k=0;k<16;k++){
+        if(str[k] !=0)
+        lcddata(str[k]);
+        else
+        break;
     }
 }
 
@@ -85,14 +76,17 @@ void delay(unsigned int value){
 
 
 void changeQueue(){
-    for (int i=0;i<14;i++)
-        queue[i]=queue[i+1];    
+    for (int i=14;i>=0;i--)
+        text[i+1]=text[i];    
 
-    queue[14] = rand()%2; // generates 0 or 1 randomly
+    int x = rand()%4; // generates 0,1,2,3 randomly
+    
+    if (x == 0)
+        text[0] = 'o';
+    else
+        text[0] = ' ';
  
     delay(10);
-    
-    
     
 }
 
