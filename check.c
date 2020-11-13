@@ -2,9 +2,9 @@
 
 void delay(unsigned int value);
 void lcdcmd(unsigned char value);
-void lcddata(unsigned int value);
+void lcddata(unsigned char value);
 void lcdinit(void);
-void lcddisplay(int row,unsigned int *queue);
+void lcddisplay(int row, unsigned char *queue);
 void LCDinterface();
 void changeQueue();
 
@@ -12,7 +12,3 @@ void changeQueue();
 #define rs PORTEbits.RE2
 #define en PORTEbits.RE1
 unsigned int score = 0;
-unsigned int queue[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-
-
-
