@@ -1,5 +1,6 @@
 #include <pic18f4520.h>
 #include <math.h>
+#include<stdio.h>
 #include <stdlib.h>
 #include "check.c"
 
@@ -10,13 +11,14 @@
 #pragma config PBADEN=OFF
 
 unsigned char text[] = {"               x"};
-
+// text[15] = dino;
 
 void LCDinterface(){
     TRISD = 0x00;
     TRISE = 0x00;
     ADCON1=0x0F;
     lcdinit();
+    lcddisplay(1,sl);
 
     
     while(1){
@@ -95,15 +97,26 @@ void changeQueue(){
     
 }
 
+
+
 void buttonIntr(char lastObs){
     
     if (button == 0){
         text[15] = ' ';
+        if (lastObs == 'o'){
+        score = score+1;
+        sl[7] = (char)(score%10)+'0';
+        sl[6] = (char)(score/10)+'0';
+        lcddisplay(1,sl);
+        }
+        
     }
     else{
         if (lastObs == 'o'){
            life--;
-           segmentdisp();
+            sl[15] = (char)life+'0';
+
+          lcddisplay(1,sl);
            if (life==0){
             lcddisplay(1,"Game Over");
             
