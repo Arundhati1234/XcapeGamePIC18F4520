@@ -2,13 +2,14 @@
 #include <math.h>
 #include <stdlib.h>
 #include "check.c"
+
 #pragma config OSC=HS
 #pragma config PWRT=OFF
 #pragma config WDT=OFF
 #pragma config DEBUG=OFF, LVP=OFF 
 #pragma config PBADEN=OFF
 
-unsigned char text[] = {"    o      o  o"};
+unsigned char text[] = {"               x"};
 
 
 void LCDinterface(){
@@ -22,6 +23,7 @@ void LCDinterface(){
         lcddisplay(2,text);
         delay(10);
         changeQueue();
+
     }
         
 }  
@@ -70,28 +72,46 @@ void lcddisplay(int row, unsigned char *str){
 
 void delay(unsigned int value){
     int i,j;
-    for(i=0;i<=value;i++)
-        for(j=0;j<=50;j++);
+    for(i=0; i<=value; i++)
+        for(j=0;j<=200;j++);
 }
 
 
 void changeQueue(){
-    for (int i=14;i>=0;i--)
+    for (int i=13; i>=0; i--)
         text[i+1]=text[i];    
 
-    int x = rand()%4; // generates 0,1,2,3 randomly
+    int x = rand()%10; // generates 0-9 randomly
     
     if (x == 0)
         text[0] = 'o';
     else
         text[0] = ' ';
  
+    text[15] = 'x';
+    buttonIntr(text[14]);
     delay(10);
+
     
 }
 
+void buttonIntr(char lastObs){
+    
+    if (button == 0){
+        text[15] = ' ';
+    }
+    else{
+        if (lastObs == 'o'){
+           life--;
+           segmentdisp();
+           if (life==0){
+            lcddisplay(1,"Game Over");
+            
+            while(1);
+           }
+        }
+        
+    }
 
-
-
-
+}
 
