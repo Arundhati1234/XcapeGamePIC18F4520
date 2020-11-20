@@ -1,3 +1,34 @@
+// /*
+//  * File:   check.c
+//  * Author: bandopadhyaya.arundhati.btech2018@sitpune.edu.in
+//  *
+//  * Created on 11/11/2020 2:07:11 PM UTC
+//  * "Created in MPLAB Xpress"
+//  */
+
+// #include<pic18f4520.h>
+// #include<xc.h>
+
+// #pragma config PBADEN = OFF
+
+
+ 
+// void main(){ 
+
+//     TRISDbits.RD1 = 0; 
+//     TRISBbits.RB3 = 1; 
+
+//     while(1){ 
+
+//         if (PORTBbits.RB3 == 1) 
+//         LATD1 = 1; 
+//         else
+//         LATD1 = 0;
+
+//     }     
+
+// } 
+
 #include<pic18f4520.h>
 
 
@@ -18,15 +49,16 @@ void segmentdisp();
 #define button PORTBbits.RB4
 
 unsigned int score = 0;
-int life = 4;
+unsigned int life = 4;
 
-// unsigned char dino[8] = {
+unsigned char dino[8] = {
     
-//     0b00000,0b01010,0b10101,0b11111,0b01110,0b00100,0b00000,0b00000
+    0x00,0x0A,0x15,0x1F,0x0E,0x04,0x04,0x00
     
     
-// };
+};
 
+char sl[] = "Score:00  Life:3";
 
 
 
