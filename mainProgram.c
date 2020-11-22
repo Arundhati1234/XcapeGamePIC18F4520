@@ -8,12 +8,12 @@
 
 #include<pic18f4520.h>
 #include<xc.h>
-#include "check.c"
+#include "check.c"                           // Including externalfiles of the program
 
-void main(){
+void main(){                                // Main function of the whole program
     
-    LCDinterface(); 
-
+    LCDinterface();                        // Calling the LCDinterface()
+ 
     
 }
 
