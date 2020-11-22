@@ -31,6 +31,7 @@
 
 #include<pic18f4520.h>
 
+// Declaration of functiones used
 
 void delay(unsigned int value);
 void lcdcmd(unsigned char value);
@@ -43,34 +44,21 @@ void changeQueue();
 void buttonIntr(char lastChar);
 void segmentdisp();
 
+// Defining all the registers used
+
 #define ldata PORTD
 #define rs PORTEbits.RE2
 #define en PORTEbits.RE1
 #define button PORTBbits.RB4
 
-unsigned int score = 0;
-unsigned int life = 4;
+unsigned int score = 0;            // Initializing the origional score
+unsigned int life = 4;             // Initializing the total number of lives 
 
-unsigned char dino[8] = {
+//unsigned char dino[8] = {
     
-    0x00,0x0A,0x15,0x1F,0x0E,0x04,0x04,0x00
+//    0x00,0x0A,0x15,0x1F,0x0E,0x04,0x04,0x00
     
-    
-};
+//};
 
-char sl[] = "Score:00  Life:3";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+char sl[] = "Score:00  Life:3";       // String array to display score and life on the LCD
 
