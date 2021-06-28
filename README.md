@@ -1,4 +1,4 @@
-# DinoPIC18F
+# XcapeGame
 Interface LCD and Button of PIC18f4520 to make a tiny version of the error 404 Dino game.
 
 1. **main**: Calls the files
