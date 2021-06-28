@@ -1,0 +1,251 @@
+/*******************LANDING PAGE******************/
+
+.landing-page {
+  height: 100vh;
+  background-image: url("hills.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (max-device-width: 1366px) {
+  .landing-page {
+    background-attachment: scroll;
+  }
+}
+
+.landing-page-text {
+  font-family: "Fira Code", monospace;
+  text-align: center;
+  color: #fff;
+  font-size: 200%;
+}
+
+#name {
+  color: #f42069;
+}
+
+.landing-page-hover {
+  text-decoration: none !important;
+  position: relative;
+  color: #bada55;
+}
+
+.landing-page-hover:before {
+  text-decoration: none !important;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  color: #bada55;
+}
+
+.landing-page-hover:hover:before {
+  text-decoration: none !important;
+  visibility: visible;
+  width: 100%;
+  text-decoration: none;
+  color: #bada55;
+}
+
+.landing-page-hover:hover {
+  color: #f42069;
+}
+
+/*******************PROJECTS******************/
+
+.header {
+  display: flex;
+  justify-content: center;
+  font-family: "Fira Code", monospace;
+  margin: 4% 0%;
+  font-weight: bold;
+}
+
+.project-div {
+  display: flex;
+  justify-content: center;
+  margin-left: 12px;
+  font-family: "Fira Code", monospace;
+}
+
+.row {
+  display: flex;
+  margin: 0;
+}
+
+.column {
+  flex: 50%;
+}
+
+.project-title {
+  padding: 2%;
+  color: rgba(244, 32, 105, 1);
+  text-decoration: none !important;
+}
+
+.project-title:hover {
+  color: #5e5e5c;
+  text-decoration: none !important;
+}
+
+.project-desc {
+  padding: 2%;
+  line-height: 170%;
+}
+
+button.icon {
+  border-radius: 100%;
+  margin: 0;
+  border: none;
+  background-color: inherit;
+}
+
+img.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.video {
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.HomeAuto {
+  flex: 1;
+}
+
+.HomeAuto.project-desc {
+  line-height: 130%;
+}
+
+.XcapeGame {
+  flex: 1;
+}
+
+.PDFtoADB {
+  background-color: #bada55;
+  flex: 1;
+}
+
+.MoodLamp {
+  background-color: #bada55;
+  flex: 1;
+}
+
+/*******************SKILLS******************/
+
+.skills-row {
+  display: flex;
+  justify-content: center;
+  margin: 0% 0% 7% 25%;
+}
+
+.skills-column {
+  flex: 1;
+  margin-left: 12px;
+  font-family: "Fira Code", monospace;
+  line-height: 170%;
+  font-size: 25px;
+}
+
+.h {
+  font-size: 14px;
+  color: #f42069;
+  display: none;
+}
+
+.skill-item:hover + .h {
+  display: block;
+}
+
+/*******************CONTACT-ME*******************/
+
+.contact-me {
+  background-image: url("grass.png");
+  display: flex;
+  justify-content: center;
+  color: #000;
+  display: flex;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (max-device-width: 1366px) {
+  .contact-me {
+    background-attachment: scroll;
+  }
+}
+
+.contacts {
+  padding: 2%;
+}
+
+.contact-me {
+  padding-left: 20%;
+}
+
+.contact-icons {
+  padding: 0% 4%;
+  display: flex;
+}
+
+.each-contact {
+  flex: 1;
+}
+
+/**************MEDIA QUERIES******************/
+
+@media screen and (max-width: 1400px) {
+  .project-title {
+    padding: 0%;
+  }
+
+  .project-desc {
+    padding: 0%;
+  }
+
+  .XcapeGame {
+    background: rgba(186, 218, 85, 0.7);
+  }
+
+  .PDFtoADB {
+    background-color: #fff;
+  }
+
+  .MoodLamp {
+    background-color: rgba(186, 218, 85, 0.7);
+  }
+
+  .row {
+    display: block;
+    margin: 0;
+    line-height: 130%;
+  }
+
+  .project-div {
+    display: block;
+  }
+
+  .skills-row {
+    margin: 12%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .skills-row {
+    display: block;
+  }
+}
